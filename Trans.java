@@ -149,30 +149,6 @@ public class Trans {
 		}
 	}
 
-	// int size=word.length();
-	/**
-	 * List<Transition> for1=new ArrayList<Transition>();
-	 * for1=possible_Transitions(q1, word); if(for1==null) {
-	 * System.out.println("Exist"); System.out.println("Does not Exists");
-	 * return false; } for(int i=0;i<for1.size();i++) { temp=for1.get(i);
-	 * name=temp.state; index=allnames.indexOf(name); current=all.get(index);
-	 * current
-	 * =helper1(current,word.substring(temp.value.length(),word.length()));
-	 * 
-	 * } System.out.println("Does not exist"); return false; }
-	 * 
-	 * State helper1(State current,String word) { // List<Transition> for1=new
-	 * ArrayList<Transition>();
-	 * 
-	 * Transition temp=new Transition("","",0.0,"",0); String name; int index;
-	 * State traverse=new State(); //
-	 * for1=current.mixcost(Character.toString(word.charAt(0)));
-	 * temp=current.min(Character.toString(word.charAt(0)));
-	 * System.out.println("Exist"); if(temp==null) { current=null;
-	 * 
-	 * } else { name=temp.state; index=allnames.indexOf(name);
-	 * current=all.get(index); } return current; }
-	 **/
 	void Print() {
 		State temp = new State();
 		Transition temp1 = new Transition("", "", 0.0, "", 0);
@@ -258,11 +234,11 @@ public class Trans {
 		int index1 = 0;
 		int index2 = 0;
 		List<String> ch_output = new ArrayList<String>();
-		if (words.contains("£")) {
-			index1 = words.indexOf("£");
+		if (words.contains("Â£")) {
+			index1 = words.indexOf("Â£");
 			if (index1 == 0) {
-				words = words.replaceFirst("£", "");
-				index2 = words.indexOf("£");
+				words = words.replaceFirst("Â£", "");
+				index2 = words.indexOf("Â£");
 				sub_words = words.substring(index1, index2);
 				if (index2 != words.length()) {
 					remain = words.substring(index2 + 1, words.length());
@@ -271,7 +247,7 @@ public class Trans {
 				}
 				String arr[] = sub_words.split(" ");
 				for (int k = 0; k < arr.length; k++) {
-					if (!remain.contains("£")) {
+					if (!remain.contains("Â£")) {
 						ch_output.add(arr[k] + remain);
 					} else {
 						ch_output.add(arr[k]);
@@ -280,8 +256,8 @@ public class Trans {
 			} else {
 				String base = words.substring(0, index1);
 				words = words.substring(index1, words.length());
-				words = words.replaceFirst("£", "");
-				index2 = words.indexOf("£");
+				words = words.replaceFirst("Â£", "");
+				index2 = words.indexOf("Â£");
 				sub_words = words.substring(0, index2);
 				if (index2 != words.length()) {
 					remain = words.substring(index2 + 1, words.length());
@@ -295,9 +271,9 @@ public class Trans {
 
 			}
 			remain = words.substring(index2 + 1, words.length());
-			while (remain.contains("£")) {
+			while (remain.contains("Â£")) {
 				String base = "";
-				index1 = remain.indexOf("£");
+				index1 = remain.indexOf("Â£");
 				if (index1 != 0) {
 					base = remain.substring(0, index1);
 					for (int k = 0; k < ch_output.size(); k++) {
@@ -306,8 +282,8 @@ public class Trans {
 					}
 					remain = remain.substring(index1, remain.length());
 				} else {
-					remain = remain.replaceFirst("£", "");
-					index2 = remain.indexOf("£");
+					remain = remain.replaceFirst("Â£", "");
+					index2 = remain.indexOf("Â£");
 					sub_words = remain.substring(0, index2);
 					String arr1[] = sub_words.split(" ");
 					int siz = ch_output.size();
@@ -331,7 +307,7 @@ public class Trans {
 						remain = remain.substring(index2 + 1, remain.length());
 					else
 						remain = "";
-					if (!remain.contains("£") && remain.length() >= 0) {
+					if (!remain.contains("Â£") && remain.length() >= 0) {
 						for (int i = 0; i < ch_output.size(); i++) {
 							String a = ch_output.get(i);
 							ch_output.set(i, a + remain);
@@ -492,7 +468,7 @@ public class Trans {
 			if (tran.get(i).change.equals(tran.get(i).value)) {
 				c_output.add(tran.get(i).change);
 			} else {
-				c_output.add("£" + tran.get(i).change + " £");
+				c_output.add("Â£" + tran.get(i).change + " Â£");
 			}
 
 		}
@@ -524,7 +500,7 @@ public class Trans {
 				c_output.add(tran.get(i).change);
 
 			} else {
-				c_output.add("£" + tran.get(i).change + " £");
+				c_output.add("Â£" + tran.get(i).change + " Â£");
 			}
 		}
 		return c_output;
